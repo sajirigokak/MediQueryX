@@ -1,0 +1,41 @@
+# MediQuery-X Cursor Rules
+
+## Project Overview
+MediQuery-X is a healthcare RAG chatbot using LangGraph, FastAPI, Pinecone, and Groq.
+It answers medical FAQs with multi-step reasoning, HIPAA-conscious design, and semantic search.
+
+## Stack
+- Backend: FastAPI (Python 3.11)
+- Orchestration: LangGraph (multi-node reasoning graph)
+- Vector DB: Pinecone
+- LLM: Groq (llama3-70b-8192)
+- Embeddings: HuggingFace sentence-transformers
+- Frontend: Streamlit
+- Containerization: Docker + docker-compose
+
+## Code Style
+- Use Python type hints everywhere
+- Pydantic v2 for all request/response models
+- Async functions for all FastAPI routes and LangGraph nodes
+- Keep each LangGraph node focused on ONE responsibility
+- Use environment variables for all secrets (never hardcode)
+- Add docstrings to all classes and functions
+
+## LangGraph Conventions
+- State is always a TypedDict
+- Nodes are async functions: async def node_name(state: GraphState) -> GraphState
+- Edges are defined after all nodes
+- Graph is compiled once at startup and reused
+
+## File Structure
+- backend/app/api/        → FastAPI route handlers
+- backend/app/core/       → config, graph definition, state
+- backend/app/services/   → pinecone, groq, embedding services
+- backend/app/models/     → pydantic request/response schemas
+- frontend/               → streamlit app
+- scripts/                → data ingestion scripts
+
+## Error Handling
+- All service calls wrapped in try/except
+- Return structured error responses from API
+- Log errors with context (never swallow silently)
