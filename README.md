@@ -32,3 +32,5 @@ Streamlit Frontend
 | Frontend | Streamlit |
 | Deployment | Render (backend) + HF Spaces (frontend) |
 
+I have attached screenshots of the application as well. This runs on localhost at present. 
+
