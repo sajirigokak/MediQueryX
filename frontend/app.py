@@ -4,8 +4,8 @@ MediQuery-X — Streamlit frontend
 
 import streamlit as st
 import requests
-
-API_URL = "http://localhost:8000/api/v1/chat/"
+import os
+API_URL = os.getenv("API_URL", "http://localhost:8000/api/v1/chat/")
 
 st.set_page_config(page_title="MediQuery-X", page_icon="🏥", layout="centered")
 st.title("🏥 MediQuery-X")
